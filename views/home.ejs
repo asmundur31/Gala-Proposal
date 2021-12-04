@@ -1,0 +1,76 @@
+<%- include('header') -%>
+
+  <main>
+    <div class="wrapper">
+      <div class="container content">
+        <div class="row pt-3">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <h1 class="text-center header">Gala, Friday 10th of December, 2021</h1>
+          </div>
+          <div class="col-2"></div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <img src="./images/nannaGala.jpeg">
+          </div>
+          <div class="col-6">
+            <img src="./images/asiGala.jpeg">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="proposal">
+              <% if(yes){ %>
+                <script>
+                  var myCanvas = document.createElement('canvas');
+                  var wrap = document.getElementsByClassName('wrapper')[0];
+
+                  myCanvas.width = window.innerWidth;
+                  myCanvas.height = window.innerHeight;
+                  myCanvas.setAttribute("style", "position: absolute; left: 0; top: 0;");
+
+                  wrap.appendChild(myCanvas);
+                  var myConfetti = confetti.create(myCanvas, {
+                    resize: true,
+                    useWorker: true
+                  });
+                  myConfetti({
+                    particleCount: 1000,
+                    spread: 1600,
+                    origin: {
+                      x: 0.5,
+                      // since they fall down, start a bit higher than random
+                      y: 0.2
+                    }
+                  });
+                </script>
+                <img class="yeey_gif mt-5" src="./images/minions.gif">
+                <div class="yes_text">
+                  She said yes!!!
+                </div>
+                <% } else { %>
+                Would you like to go to Gala with me?
+              <% } %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <% if(buttons){ %>
+              <div class="buttons mt-5 mb-5">
+                <a class="btn btn-primary mr-3" href="yes" role="button">Yes</a>
+                <a class="btn btn-primary" href="no" role="button">No</a>
+              </div>
+            <% } %>
+          </div>
+          <div class="col-2"></div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <%- include('footer') -%>
